@@ -14,7 +14,7 @@
 
     <div class="col-xs-12">
 
-        <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (click)="OnRecipeClick(recipe)">
+        <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (click)="recipesService.OnSelectRecipeEvent.emit(recipe)">
         </app-recipe-item>
 
     </div>
