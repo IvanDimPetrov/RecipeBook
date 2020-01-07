@@ -4,20 +4,20 @@
             <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
                 <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
             </button>
-            <a routerLink="/" class="navbar-brand">Recipe Book</a>
+            <a routerLink="" class="navbar-brand">Recipe Book</a>
         </div>
 
         <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
             <ul class="nav navbar-nav">
-                <li (click)="OnNavItemClick('recipe', $event)"><a href="#">Recipe</a></li>
-                <li (click)="OnNavItemClick('shoppingList', $event)"><a href="#">Shoping List</a></li>
+                <li routerLinkActive="active"><a class="nav-link" routerLink="recipes">Recipes</a></li>
+                <li routerLinkActive="active"><a class="nav-link" routerLink="shoping-list">Shoping List</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+                <li class="dropdown" appDropdown>
+                    <a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Save Data</a></li>
-                        <li><a href="#">Fetch Data</a></li>
+                        <li><a style="cursor: pointer">Save Data</a></li>
+                        <li><a style="cursor: pointer">Fetch Data</a></li>
                     </ul>
                 </li>
             </ul>

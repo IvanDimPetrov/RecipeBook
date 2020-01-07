@@ -7,14 +7,5 @@ import { Component, Output, EventEmitter} from '@angular/core';
 })
 
 export class HeaderComponent {
-
-    @Output() navItemClickEvent = new EventEmitter<string>();
-
     collapsed=true;
-
-    OnNavItemClick(item: string, event: Event) {
-        event.preventDefault();
-        this.navItemClickEvent.emit(item);
-    }
-
 }

@@ -7,18 +7,18 @@ export class RecipesService {
     OnSelectRecipeEvent = new EventEmitter();
 
     private recipes: Recipe[] =[
-        new Recipe("миш маш", 
+        new Recipe(1, "миш маш", 
                     "чушляци с яйца", 
                     "https://recepti.gotvach.bg/files/lib/500x350/mishmashselski5.jpg",
                     [new Ingredient("Чубрица", 5)]),
 
-        new Recipe("пърженица", 
+        new Recipe(2, "пърженица", 
                    "пак чушляци с яйца", 
                    "https://receptite.com/photos/2019/41/big/R21705ULirinkaN82662.jpg",
                    [new Ingredient("Сол", 2)]),
                    
 
-        new Recipe("бобец", 
+        new Recipe(3, "бобец", 
                    "фартинг", 
                    "https://receptite.com/photos/2019/41/big/R5365USlavinaN37265.jpg",
                    [new Ingredient("джоджен", 15)])
@@ -26,6 +26,14 @@ export class RecipesService {
 
     getRecipes() {
         return this.recipes.slice();
+    }
+
+    getRecipeById(id: number) {
+        var recipe = this.recipes.find((el) => {
+            return el.id === id;
+        })
+
+        return Object.assign({}, recipe);
     }
 
 }

@@ -2,7 +2,7 @@
 
     <div class="mb-sm-4 col-xs-12">
 
-        <button class="btn btn-success btn-block mb-5">
+        <button class="btn btn-success btn-block mb-5" (click)="OnNewRecipe()">
             New Recipe
         </button>
 
@@ -13,10 +13,8 @@
 <div class="row">
 
     <div class="col-xs-12">
-
-        <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (click)="recipesService.OnSelectRecipeEvent.emit(recipe)">
+        <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe">
         </app-recipe-item>
-
     </div>
 
 </div>
