@@ -2,29 +2,33 @@
 
     <div class="col-xs-12">
 
-        <form #addIngredient="ngForm" (ngSubmit)="OnSubmit(addIngredient.value)">
+        <form #addIngredientForm="ngForm" (ngSubmit)="OnSubmit()">
 
             <div class="row">
 
                 <div class="col-sm-5 form-group">
 
                     <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" ngModel name="name" #nameInput>
+                    <input type="text" id="name" class="form-control" ngModel name="name" required #name="ngModel">
+
+                    <label *ngIf="!name.valid && name.touched" class="text-danger">This field is required</label>
 
                 </div>
 
                 <div class="col-sm-2 form-group">
 
                     <label for="amount">Amount</label>
-                    <input type="number" id="amount" class="form-control" ngModel name="amount" #amountInput>
+                    <input type="number" id="amount" class="form-control" ngModel name="amount" required [pattern]="'^[1-9]+[0-9]*$'" #amount="ngModel">
+
+                    <label *ngIf="!amount.valid && amount.touched" class="text-danger">This field is required!!!</label>
 
                 </div>
 
                 <div class="col-sm-12">
 
-                    <button type="submit" class="btn btn-success mr-5">Add</button>
-                    <button type="button" class="btn btn-danger mr-5">Delete</button>
-                    <button type="reset" class="btn btn-primary">Clear</button>
+                    <button [disabled]="!isValidFormData" type="submit" class="btn btn-success mr-5">{{ submitButtonLabel }}</button>
+                    <button *ngIf="editMode" type="button" class="btn btn-danger mr-5" (click)="DeleteIngredient()">Delete</button>
+                    <button type="button" class="btn btn-primary" (click)="ResetForm()">Clear</button>
 
                 </div>
 

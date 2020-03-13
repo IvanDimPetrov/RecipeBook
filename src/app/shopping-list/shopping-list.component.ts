@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  
 
   private shopingListServiceSubcription: Subscription;
 
@@ -27,6 +26,10 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.shopingListServiceSubcription.unsubscribe();
+  }
+
+  OnEditIngredient(id: number) {
+    this.shoppingListService.editIngredient.next(id);
   }
 
 }
